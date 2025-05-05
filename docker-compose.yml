@@ -1,0 +1,28 @@
+services:
+  rng:
+    build: ./rng
+    ports:
+      - "8001:80"
+
+  hasher:
+    build: ./hasher
+    ports:
+      - "8002:80"
+
+  webui:
+    build: ./webui
+    ports:
+      - "8000:80"
+    volumes:
+      - "./webui/files/:/files/"
+
+  redis:
+    image: redis
+
+  worker:
+    build: ./worker
+
+  coworker:
+    build: ./coworker
+    depends_on:
+      - worker
