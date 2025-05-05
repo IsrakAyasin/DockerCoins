@@ -48,8 +48,8 @@ def work_loop(interval=1):
     while True:
         if pause_worker.is_set():
             log.info("Worker paused. Going to sleep...")
-            # Sleep for a random time between 0.03 and 0.1 seconds
-            sleep_time = random.uniform(0.03, 0.1)
+            # Sleep for a random time
+            sleep_time = random.uniform(0.2, 0.4)
             log.debug(f"Sleeping for {sleep_time:.3f} seconds")
             time.sleep(sleep_time)
             
